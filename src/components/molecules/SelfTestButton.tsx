@@ -2,12 +2,12 @@ import LinkedButton from "../atoms/LinkedButton";
 
 const SelfTestButton = () => {
   const styles = {
-    fontSize: 18,
+    fontSize: "1.2rem",
     backgroundColor: "#D71313",
-    padding: 20,
+    padding: "20px",
     color: "#EEEDED",
     fontWeight: "bold",
-    margin: 10,
+    margin: "10px",
   };
 
   return (

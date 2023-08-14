@@ -1,18 +1,12 @@
 import styled from "styled-components";
 import Link from "next/link";
+import type { LinkedButtonStyles } from "@/interface/LinkedButtonStylesProps";
 
 interface ButtonProps {
   content: string;
   routerPage: string;
-  isAbsolute: boolean;
-  styles: {
-    fontSize: number;
-    backgroundColor: string;
-    padding: number;
-    color: string;
-    fontWeight: string;
-    margin: number;
-  };
+  isAbsolute?: boolean;
+  styles: LinkedButtonStyles;
 }
 
 const LinkedButton = ({
@@ -46,26 +40,26 @@ const StyledLink = styled(Link)`
 `;
 
 const StyledButton = styled.button<{
-  styles: {
-    fontSize: number;
-    backgroundColor: string;
-    padding: number;
-    color: string;
-    fontWeight: string;
-    margin: number;
-  };
+  styles: LinkedButtonStyles;
 }>`
-  font-size: ${(props) => `${props.styles.fontSize}px`};
+  width: ${(props) => props.styles.width};
+  height: ${(props) => props.styles.height};
+  font-size: ${(props) => props.styles.fontSize};
   background-color: ${(props) => props.styles.backgroundColor};
-  padding: ${(props) => `${props.styles.padding}px`};
+  padding: ${(props) => props.styles.padding};
   color: ${(props) => props.styles.color};
   font-weight: ${(props) => props.styles.fontWeight};
-  margin: ${(props) => `${props.styles.margin}px`};
+  margin: ${(props) => props.styles.margin};
+  border-radius: ${(props) => props.styles.borderRadius};
+  position: ${(props) => props.styles.position};
+  top: ${(props) => props.styles.top};
+  right: ${(props) => props.styles.right};
+  left: ${(props) => props.styles.left};
+  bottom: ${(props) => props.styles.bottom};
 
-  @media (max-width: 600px) {
-    font-size: ${(props) => `${props.styles.fontSize - 5}px`};
-    padding: ${(props) => `${props.styles.padding - 10}px`};
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export default LinkedButton;

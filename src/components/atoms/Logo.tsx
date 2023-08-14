@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const Logo = () => {
   return (
-    <Link href="/" as="image">
+    <Link href="/">
       <StyledImg src={logo} alt="SD COMMUNITY LOGO" priority={true} />
     </Link>
   );

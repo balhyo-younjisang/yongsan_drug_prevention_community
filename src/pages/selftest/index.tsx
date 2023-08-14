@@ -2,6 +2,7 @@ import withHead from "@/components/hoc/withHead";
 import SelfTestHomeTemplate from "@/components/template/SelfTest";
 import Router from "next/router";
 import { useState } from "react";
+import { calculateTestScore } from "@/utils/calculateScore";
 
 const SelfTestHome = () => {
   // 유저의 정보를 저장하는 객체 state
@@ -102,31 +103,10 @@ const SelfTestHome = () => {
     });
   };
 
-  /** 유저의 검사 점수를 계산하는 함수, 만약 검사 결과가 올바르지 않으면 경고창 */
-  const calculateTestScore = () => {
-    let score = 0;
-    let flag = false;
-    userAnswer.map((obj) => {
-      if (obj.answer === "") flag = true; // 체크를 하지 않았다면
-
-      if (obj.id === 3) {
-        score += obj.answer === "y" ? 0 : 1;
-      } else {
-        score += obj.answer === "y" ? 1 : 0;
-      }
-    });
-
-    if (flag) {
-      score = NaN;
-    }
-
-    return score;
-  };
-
   /** 결과보기 버튼을 눌렀을 때 작동하는 함수*/
   const submitHandler = (event: React.FormEvent<HTMLButtonElement>) => {
     event.preventDefault();
-    const result = calculateTestScore();
+    const result = calculateTestScore(userAnswer);
 
     if (Number.isNaN(result)) alert("모든 항목을 체크해주세요.");
     else Router.push(`/selftest/result?score=${result}`, "/selftest/result");

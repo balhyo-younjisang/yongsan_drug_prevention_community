@@ -9,7 +9,7 @@ const useSearch = () => {
 
   const handleSubmit = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
-    console.log(searchKey);
+    return searchKey;
   };
 
   return {
