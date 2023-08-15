@@ -1,31 +1,37 @@
 import styled from "styled-components";
 
+import { BaseInputTitleStyles } from "@/interface/BaseInputTItleStyles";
+
 interface InputProps {
   value: string;
   placeholder: string;
   onChangeHandler: React.ChangeEventHandler<HTMLInputElement>;
+  styles?: BaseInputTitleStyles;
 }
 
-const Input = ({ value, onChangeHandler, placeholder }: InputProps) => {
+const Input = ({ value, onChangeHandler, placeholder, styles }: InputProps) => {
   return (
     <StyledInput
       value={value}
       onChange={onChangeHandler}
       placeholder={placeholder}
+      $styles={styles}
     />
   );
 };
 
-const StyledInput = styled.input`
-  width: 20vw;
+const StyledInput = styled.input<{ $styles?: BaseInputTitleStyles }>`
+  width: ${(props) => props.$styles?.width || "20vw"};
   height: auto;
   border-bottom: 1px solid black;
-  font-size: 16px;
+  font-size: ${(props) => props.$styles?.fontSize || "16px"};
+  padding: 5px;
   text-align: center;
-  margin: 0px 5px;
+  margin: ${(props) => props.$styles?.margin};
 
   @media (max-width: 600px) {
-    width: 50vw;
+    // width: 50vw;
+    width: 100%;
     font-size: 15px;
   }
 `;

@@ -1,6 +1,7 @@
 import CommunityHeader from "@/components/organisms/Community/Header";
 import CommunityMain from "@/components/organisms/Community/Main";
 import CommunityWriteButton from "@/components/organisms/Community/WriteButton";
+import { fetchDataBase } from "@/interface/BaseFetchData";
 
 const HeaderTitleStyles = {
   fontSize: "4rem",
@@ -30,7 +31,12 @@ const WriteButtonStyles = {
   right: "4rem",
 };
 
-const CommunityHomeTemplate = () => {
+interface BaseCommunityTemplate {
+  responseData: fetchDataBase;
+}
+
+const CommunityHomeTemplate = ({ responseData }: BaseCommunityTemplate) => {
+  if (!responseData.loading) console.log(responseData.payload);
   return (
     <>
       <CommunityHeader

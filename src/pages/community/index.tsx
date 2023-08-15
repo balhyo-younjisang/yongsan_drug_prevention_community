@@ -1,8 +1,29 @@
+import { useFetch } from "@/hooks/useFetch";
+import { useEffect } from "react";
+
 import withHead from "@/components/hoc/withHead";
 import CommunityHomeTemplate from "@/components/template/Community";
 
+interface fetchDataBase {
+  payload: any;
+  loading: boolean;
+  error: string;
+}
+
 const CommunityHome = () => {
-  return <CommunityHomeTemplate />;
+  const [res, callApi] = useFetch({
+    url: `/post/getRecentPosts`,
+    headers: {},
+    method: "get",
+    datas: {},
+  });
+
+  useEffect(() => {
+    callApi();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  return <CommunityHomeTemplate responseData={res} />;
 };
 
 export default withHead(

@@ -9,6 +9,7 @@ interface SubmitButtonProps {
     fontSize: string;
     fontWeight: string;
     width: string;
+    mediaFontSize: string;
   };
 }
 
@@ -31,6 +32,7 @@ const StyledButton = styled.button<{
     fontSize: string;
     fontWeight: string;
     width: string;
+    mediaFontSize: string;
   };
 }>`
   padding: ${(props) => props.$styles.padding};
@@ -40,6 +42,10 @@ const StyledButton = styled.button<{
   color: white;
   margin: ${(props) => props.$styles.marginTop} auto;
   width: ${(props) => props.$styles.width};
+
+  @media (max-width: 768px) {
+    font-size: ${(props) => props.$styles.mediaFontSize};
+  }
 `;
 
 export default SubmitButton;
