@@ -13,7 +13,7 @@ const SelfTestButton = () => {
   return (
     <LinkedButton
       isAbsolute={true}
-      content="마약중독 자가진단"
+      content="마약중독 자가진단 하러가기"
       routerPage="/selftest"
       styles={styles}
     />

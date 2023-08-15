@@ -30,14 +30,7 @@ const LinkedButton = ({
   );
 };
 
-const StyledLink = styled(Link)`
-  position: absolute;
-  top: 80vh;
-
-  @media (max-width: 600px) {
-    top: 45vh;
-  }
-`;
+const StyledLink = styled(Link)``;
 
 const StyledButton = styled.button<{
   styles: LinkedButtonStyles;

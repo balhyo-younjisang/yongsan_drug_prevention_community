@@ -1,6 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { collection, getDocs } from "firebase/firestore";
 import fireStore from "@/firebase/firestore";
+import { BasePostData } from "@/interface/BasePostData";
 
 const GetRecentPost = async (
   req: NextApiRequest,
@@ -9,12 +10,12 @@ const GetRecentPost = async (
   try {
     const posts = await getDocs(collection(fireStore, "posts"));
 
-    let recentPostsList: any[] = [];
+    let recentPostsList: BasePostData[] = [];
     posts.forEach((doc: any) => {
       if (recentPostsList.length > 10) return;
 
       const data = doc.data();
-      recentPostsList.push(data);
+      recentPostsList.push({ ...data, docId: doc.id });
     });
 
     res.status(200).json(recentPostsList);

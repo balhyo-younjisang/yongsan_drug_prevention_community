@@ -26,7 +26,7 @@ const WriteButtonStyles = {
   color: "white",
   margin: "0px",
   borderRadius: "50%",
-  position: "absolute",
+  position: "fixed",
   top: "90vh",
   right: "4rem",
 };
@@ -43,7 +43,7 @@ const CommunityHomeTemplate = ({ responseData }: BaseCommunityTemplate) => {
         titleStyles={HeaderTitleStyles}
         subTitleStyles={HeaderSubTitleStyles}
       />
-      <CommunityMain />
+      {!responseData.loading && <CommunityMain posts={responseData.payload} />}
       <CommunityWriteButton styles={WriteButtonStyles} />
     </>
   );
