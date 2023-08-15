@@ -32,7 +32,7 @@ const StyledButton = styled.button<{
     fontSize: string;
     fontWeight: string;
     width: string;
-    mediaFontSize: string;
+    mediaFontSize?: string;
   };
 }>`
   padding: ${(props) => props.$styles.padding};
