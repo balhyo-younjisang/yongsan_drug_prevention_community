@@ -15,7 +15,7 @@ const calcElapsedTime = (date: string) => {
     { name: "day", milliSeconds: 60 * 60 * 24 },
     { name: "hour", milliSeconds: 60 * 60 },
     { name: "minute", milliSeconds: 60 },
-  ];
+  ] as const;
 
   for (const value of times) {
     const betweenTime = Math.floor(diff / value.milliSeconds);
