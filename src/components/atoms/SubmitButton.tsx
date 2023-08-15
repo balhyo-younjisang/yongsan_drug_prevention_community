@@ -9,7 +9,7 @@ interface SubmitButtonProps {
     fontSize: string;
     fontWeight: string;
     width: string;
-    mediaFontSize: string;
+    mediaFontSize?: string;
   };
 }
 
