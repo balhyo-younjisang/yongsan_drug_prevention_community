@@ -4,18 +4,25 @@ import SectionHeader from "@/components/molecules/Community/PostSectionHeader";
 import SectionContent from "@/components/molecules/Community/PostSectionContent";
 
 import { BasePostData } from "@/interface/BasePostData";
+import { BaseNewsData } from "@/interface/BaseNewsData";
 
-const CommunityMain = ({ posts }: { posts: BasePostData[] }) => {
+const CommunityMain = ({
+  posts,
+  news,
+}: {
+  posts: BasePostData[];
+  news: BaseNewsData[];
+}) => {
   return (
     <StyledMain>
       <StyledPostSection height="40%">
-        <SectionHeader routerPage="/community/notice" value="공지사항 📢" />
-        <SectionContent contents={[]} />
+        <SectionHeader routerPage="/community/notice" value="뉴스 📰" />
+        <SectionContent newsContents={news} />
       </StyledPostSection>
 
       <StyledPostSection height="60%">
         <SectionHeader routerPage="/community/board" value="게시글 💬" />
-        <SectionContent contents={posts} />
+        <SectionContent postContents={posts} />
       </StyledPostSection>
     </StyledMain>
   );

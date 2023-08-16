@@ -5,16 +5,24 @@ import { BasePostData } from "@/interface/BasePostData";
 
 import viewsIcon from "/public/icons/views.svg";
 import commentIcon from "/public/icons/comments.svg";
+import likesIcon from "/public/icons/likes.svg";
 import Image from "next/image";
-import { query } from "firebase/firestore";
 
 const Post = ({ postData }: { postData: BasePostData }) => {
   return (
     <StyledLink
-      href={{ pathname: `/community/post/[id]`, query: { id: postData.docId } }}
+      href={{
+        pathname: `/community/post/[id]`,
+        query: { id: postData.docId },
+      }}
     >
       <StyledTitle>{postData.title}</StyledTitle>
       <StyledInfo>
+        <StyledItem>
+          <Image src={likesIcon} alt="likes" />
+          <StyledContent>{postData.like}</StyledContent>
+        </StyledItem>
+        <span>•</span>
         <StyledItem>
           <Image src={viewsIcon} alt="views" />
           <StyledContent>{postData.views}</StyledContent>
@@ -43,6 +51,10 @@ const StyledTitle = styled.span`
   overflow: hidden;
   white-space: nowrap;
   width: 60%;
+
+  @media (max-width: 768px) {
+    font-size: 12px;
+  }
 `;
 
 const StyledInfo = styled.div`
@@ -52,6 +64,10 @@ const StyledInfo = styled.div`
   width: 40%;
   font-size: 0.875rem;
   line-height: 1.25rem;
+
+  @media (max-width: 768px) {
+    font-size: 12px;
+  }
 `;
 
 const StyledItem = styled.span`

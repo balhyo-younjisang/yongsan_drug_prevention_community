@@ -14,6 +14,7 @@ const CommunityWritePage = () => {
   const [res, callApi] = useFetch({
     url: "/post/writePost",
     headers: { "Content-Type": "application/json" },
+    params: {},
     method: "POST",
     datas: postData,
   });

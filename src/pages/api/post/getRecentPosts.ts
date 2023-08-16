@@ -20,6 +20,7 @@ const GetRecentPost = async (
 
     res.status(200).json(recentPostsList);
   } catch (err) {
+    console.log(`Server Error : ${err}`);
     res.status(500).json(`Server Error ${err}`);
   }
 };

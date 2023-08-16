@@ -7,26 +7,36 @@ import { fetchDataBase } from "@/interface/BaseFetchData";
 interface ParameterBase {
   url: string;
   headers: any;
+  params: any;
   method: string;
   datas: any;
 }
 
 /** 인자 : {url:"some url here", header: {headers}, method: "api method", data: {datas}} */
-export const useFetch = ({ url, headers, method, datas }: ParameterBase) => {
+export const useFetch = ({
+  url,
+  headers,
+  params,
+  method,
+  datas,
+}: ParameterBase) => {
   const [fetchData, setFetchData] = useState<fetchDataBase>({
     payload: null,
     loading: true,
     error: "",
   });
 
-  const callUrl = useCallback(() => {
+  const callUrl = useCallback(async () => {
     try {
-      axios({
+      await axios({
         method,
         url,
         baseURL: baseApiUrl,
         headers: {
           ...headers,
+        },
+        params: {
+          ...params,
         },
         data: {
           ...datas,
@@ -42,7 +52,7 @@ export const useFetch = ({ url, headers, method, datas }: ParameterBase) => {
     } finally {
       setFetchData((prev) => ({ ...prev, loading: false }));
     }
-  }, [url, method, headers, datas]);
+  }, [url, method, params, headers, datas]);
 
   return [fetchData, callUrl] as const;
 };

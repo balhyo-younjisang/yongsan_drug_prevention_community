@@ -28,22 +28,27 @@ const WriteButtonStyles = {
   borderRadius: "50%",
   position: "fixed",
   top: "90vh",
-  right: "4rem",
+  right: "8rem",
 };
 
 interface BaseCommunityTemplate {
   responseData: fetchDataBase;
+  newsData: fetchDataBase;
 }
 
-const CommunityHomeTemplate = ({ responseData }: BaseCommunityTemplate) => {
-  if (!responseData.loading) console.log(responseData.payload);
+const CommunityHomeTemplate = ({
+  responseData,
+  newsData,
+}: BaseCommunityTemplate) => {
   return (
     <>
       <CommunityHeader
         titleStyles={HeaderTitleStyles}
         subTitleStyles={HeaderSubTitleStyles}
       />
-      {!responseData.loading && <CommunityMain posts={responseData.payload} />}
+      {!(responseData.loading || newsData.loading) && (
+        <CommunityMain posts={responseData.payload} news={newsData.payload} />
+      )}
       <CommunityWriteButton styles={WriteButtonStyles} />
     </>
   );

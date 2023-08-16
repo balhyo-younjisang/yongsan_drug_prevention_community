@@ -14,16 +14,26 @@ const CommunityHome = () => {
   const [res, callApi] = useFetch({
     url: `/post/getRecentPosts`,
     headers: {},
+    params: {},
+    method: "get",
+    datas: {},
+  });
+
+  const [newsData, callGetNewsApi] = useFetch({
+    url: `/news/getRecentNews`,
+    headers: {},
+    params: { query: "마약중독" },
     method: "get",
     datas: {},
   });
 
   useEffect(() => {
     callApi();
+    callGetNewsApi();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  return <CommunityHomeTemplate responseData={res} />;
+  return <CommunityHomeTemplate responseData={res} newsData={newsData} />;
 };
 
 export default withHead(
