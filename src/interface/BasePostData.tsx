@@ -1,7 +1,7 @@
 export interface BasePostData {
   docId: string;
   comment: string[];
-  contant: string;
+  content: string;
   date: Date;
   like: number;
   title: string;

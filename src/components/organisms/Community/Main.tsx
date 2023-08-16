@@ -10,6 +10,7 @@ const CommunityMain = ({ posts }: { posts: BasePostData[] }) => {
     <StyledMain>
       <StyledPostSection height="40%">
         <SectionHeader routerPage="/community/notice" value="공지사항 📢" />
+        <SectionContent contents={[]} />
       </StyledPostSection>
 
       <StyledPostSection height="60%">
