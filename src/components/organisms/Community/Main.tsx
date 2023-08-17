@@ -16,7 +16,7 @@ const CommunityMain = ({
   return (
     <StyledMain>
       <StyledPostSection height="40%">
-        <SectionHeader routerPage="/community/notice" value="뉴스 📰" />
+        <SectionHeader routerPage="/community" value="뉴스 📰" />
         <SectionContent newsContents={news} />
       </StyledPostSection>
 

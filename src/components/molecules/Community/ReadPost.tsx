@@ -17,7 +17,9 @@ const ReadPost = ({ postData }: { postData: BasePostData }) => {
         <StyledTitle>{postData.title}</StyledTitle>
         <StyledInfo>{elapsedTime}</StyledInfo>
       </StyledHeader>
-      <StyledContent>{postData.content}</StyledContent>
+      <StyledContent>
+        <StyledDetail>{postData.content}</StyledDetail>
+      </StyledContent>
     </StyledContainer>
   );
 };
@@ -29,7 +31,11 @@ const StyledContainer = styled.div`
 
 const StyledHeader = styled.header`
   display: flex;
+  align-items: center;
   justify-content: space-between;
+  background-color: #f9fafb;
+  padding: 30px;
+  border-radius: 5px;
 `;
 
 const StyledTitle = styled.p`
@@ -39,11 +45,24 @@ const StyledTitle = styled.p`
 
 const StyledInfo = styled.p`
   font-size: 13px;
+  margin-bottom: 0;
 `;
 
 const StyledContent = styled.main`
   width: 100%;
+  min-height: 70vh;
   margin: 30px auto;
+  background-color: #f9fafb;
+  border-radius: 5px;
+  padding: 30px;
+`;
+
+const StyledDetail = styled.div`
+  width: 100%;
+  height: 90%;
+  white-space: normal;
+  word-wrap: break-word;
+  word-break: keep-all;
 `;
 
 export default ReadPost;
