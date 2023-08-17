@@ -13,7 +13,7 @@ interface userInputBase {
 
 const WritePost = async (req: NextApiRequest, res: NextApiResponse<any>) => {
   const { title, content, id, password }: userInputBase = req.body;
-  const toDay = new Date().toLocaleString();
+  const toDay = new Date().toISOString();
 
   try {
     if (!id || !password)

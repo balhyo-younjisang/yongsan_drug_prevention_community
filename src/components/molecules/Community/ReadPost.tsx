@@ -1,13 +1,21 @@
+import { useMemo } from "react";
+
 import { BasePostData } from "@/interface/BasePostData";
 
 import styled from "styled-components";
+import calcElapsedTime from "@/utils/calcElapsedTime";
 
 const ReadPost = ({ postData }: { postData: BasePostData }) => {
+  const elapsedTime = useMemo(() => {
+    return calcElapsedTime(postData.date);
+  }, [postData.date]);
+
   return (
     <StyledContainer>
       <StyledHeader>
+        <StyledInfo>By {postData.author}</StyledInfo>
         <StyledTitle>{postData.title}</StyledTitle>
-        <StyledAuthor>By {postData.author}</StyledAuthor>
+        <StyledInfo>{elapsedTime}</StyledInfo>
       </StyledHeader>
       <StyledContent>{postData.content}</StyledContent>
     </StyledContainer>
@@ -25,10 +33,11 @@ const StyledHeader = styled.header`
 `;
 
 const StyledTitle = styled.p`
-  font-size: 20px;
+  font-size: 26px;
+  font-weight: bold;
 `;
 
-const StyledAuthor = styled.p`
+const StyledInfo = styled.p`
   font-size: 13px;
 `;
 

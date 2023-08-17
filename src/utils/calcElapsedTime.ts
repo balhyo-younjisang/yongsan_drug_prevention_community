@@ -1,6 +1,6 @@
 /** 경과 시간을 계산해주는 함수 */
 const calcElapsedTime = (date: string) => {
-  const wroteTime = new Date(date).valueOf();
+  const wroteTime = new Date(Date.parse(date)).valueOf();
   const currentTime = new Date().valueOf();
 
   const diff = (currentTime - wroteTime) / 1000;
