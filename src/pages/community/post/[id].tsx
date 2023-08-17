@@ -2,7 +2,9 @@ import withHead from "@/components/hoc/withHead";
 
 import { useRouter } from "next/router";
 import { useFetch } from "@/hooks/useFetch";
-import { useEffect, useCallback } from "react";
+import { useEffect } from "react";
+
+import ReadPost from "@/components/molecules/Community/ReadPost";
 
 const PostReadPage = () => {
   const router = useRouter();
@@ -21,7 +23,9 @@ const PostReadPage = () => {
     datas: {},
   });
 
-  return <>{res.payload ? <p>{res.payload.title}</p> : <>Loading...</>}</>;
+  return (
+    <>{res.payload ? <ReadPost postData={res.payload} /> : <>Loading...</>}</>
+  );
 };
 
 export default withHead(PostReadPage, "SD Community", "SD Community");
