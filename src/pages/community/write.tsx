@@ -9,6 +9,8 @@ const CommunityWritePage = () => {
   const [postData, setPostData] = useState({
     title: "",
     content: "",
+    id: "",
+    password: "",
   });
 
   const [res, callApi] = useFetch({
@@ -35,6 +37,22 @@ const CommunityWritePage = () => {
     });
   };
 
+  const changeAuthorIdHandler = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setPostData((prevState) => {
+      return { ...prevState, id: event.target.value };
+    });
+  };
+
+  const changeAuthorPasswordHandler = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setPostData((prevState) => {
+      return { ...prevState, password: event.target.value };
+    });
+  };
+
   const submitPostHandler = (event: React.FormEvent<HTMLButtonElement>) => {
     event.preventDefault();
     callApi();
@@ -43,7 +61,13 @@ const CommunityWritePage = () => {
 
   return (
     <CommunityWritePostTemplate
-      postInfo={{ postData, changePostTitleHandler, changePostContentHandler }}
+      postInfo={{
+        postData,
+        changePostTitleHandler,
+        changePostContentHandler,
+        changeAuthorIdHandler,
+        changeAuthorPasswordHandler,
+      }}
       submitPostHandler={submitPostHandler}
     />
   );

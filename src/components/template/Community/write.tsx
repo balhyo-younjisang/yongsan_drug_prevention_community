@@ -45,6 +45,17 @@ const CommunityWritePostTemplate = ({
         onChangeHandler={postInfo.changePostContentHandler}
         styles={InputContentStyles}
       />
+      <InputUserData>
+        <StyledInput
+          placeholder="아이디를 입력해주세요"
+          onChange={postInfo.changeAuthorIdHandler}
+        />
+        <StyledInput
+          type="password"
+          placeholder="비밀번호를 입력해주세요"
+          onChange={postInfo.changeAuthorPasswordHandler}
+        />
+      </InputUserData>
       <SubmitButton
         content="글쓰기"
         onSubmitHandler={submitPostHandler}
@@ -60,6 +71,28 @@ const StyledContainer = styled.div`
   width: 80%;
   margin: 0 auto;
   align-items: center;
+`;
+
+const InputUserData = styled.div`
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+`;
+
+const StyledInput = styled.input`
+  border: 1px solid black;
+  padding: 5px;
+  width: 30%;
+
+  @media (max-width: 768px) {
+    width: 80%;
+    margin: 10px 0px;
+  }
 `;
 
 export default CommunityWritePostTemplate;

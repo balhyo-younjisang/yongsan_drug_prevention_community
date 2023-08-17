@@ -1,16 +1,23 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import fireStore from "@/firebase/firestore";
 import { collection, addDoc } from "firebase/firestore";
-import { changeErrorMessageToString } from "@/utils/changeErrorToString";
+import dbConnect from "@/db/dbConnect";
 
 interface userInputBase {
   title: string;
   content: string;
+  id: string;
+  password: string;
 }
 
 const WritePost = async (req: NextApiRequest, res: NextApiResponse<any>) => {
-  const { title, content }: userInputBase = req.body;
+  const { title, content, id, password }: userInputBase = req.body;
   const toDay = new Date().toLocaleString();
+
+  if (!id || !password)
+    res.status(402).json("id or password input area is empty");
+
+  await dbConnect();
 
   try {
     await addDoc(collection(fireStore, "posts"), {
