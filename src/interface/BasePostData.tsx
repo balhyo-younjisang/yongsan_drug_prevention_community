@@ -6,4 +6,5 @@ export interface BasePostData {
   like: number;
   title: string;
   views: number;
+  author: string;
 }
