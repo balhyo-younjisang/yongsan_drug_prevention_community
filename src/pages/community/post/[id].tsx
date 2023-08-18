@@ -10,21 +10,41 @@ const PostReadPage = () => {
   const router = useRouter();
   const postId = router.query.id;
 
-  useEffect(() => {
-    if (postId) callApi();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [postId]);
-
   const [res, callApi] = useFetch({
     url: `/post/${postId}`,
     headers: {},
     params: {},
-    method: "get",
+    method: "GET",
     datas: {},
   });
 
+  const [updateRes, callUpdateLikeCountApi] = useFetch({
+    url: `/post/${postId}`,
+    headers: {},
+    params: {},
+    method: "PATCH",
+    datas: {},
+  });
+
+  useEffect(() => {
+    callApi();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [postId]);
+
+  /** 업데이트된 게시글의 정보를 가져오는 함수 */
+  const updatingPostData = () => {
+    callUpdateLikeCountApi();
+    callApi();
+  };
+
   return (
-    <>{res.payload ? <ReadPost postData={res.payload} /> : <>Loading...</>}</>
+    <>
+      {res.payload ? (
+        <ReadPost postData={res.payload} onClickLikeButton={updatingPostData} />
+      ) : (
+        <>Loading...</>
+      )}
+    </>
   );
 };
 
