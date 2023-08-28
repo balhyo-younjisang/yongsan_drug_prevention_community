@@ -30,9 +30,9 @@ const StyledInput = styled.input<{ $styles?: BaseInputTitleStyles }>`
   margin: ${(props) => props.$styles?.margin};
 
   @media (max-width: 600px) {
-    // width: 50vw;
-    width: 100%;
-    font-size: 15px;
+    width: 50vw;
+    font-size: 10px;
+    padding: 10px;
   }
 `;
 

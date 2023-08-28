@@ -17,7 +17,8 @@ const StyledButton = styled.button`
   border-radius: 3px;
 
   @media (max-width: 600px) {
-    font-size: 15px;
+    font-size: 8px;
+    padding: 0px 20px;
   }
 `;
 

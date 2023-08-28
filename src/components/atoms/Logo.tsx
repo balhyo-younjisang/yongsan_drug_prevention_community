@@ -17,7 +17,8 @@ const StyledImg = styled(Image)`
   height: auto;
 
   @media (max-width: 600px) {
-    width: 40vw;
+    width: 30vw;
+    height: 10vh;
   }
 `;
 
